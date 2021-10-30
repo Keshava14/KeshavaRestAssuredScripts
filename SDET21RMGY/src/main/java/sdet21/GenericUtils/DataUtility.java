@@ -1,10 +1,12 @@
 package sdet21.GenericUtils;
 
 import java.sql.Connection;
-import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import com.mysql.cj.jdbc.Driver;
+
 
 /**
  * This class contains generic methods to access database connection
@@ -12,7 +14,6 @@ import java.sql.SQLException;
  *
  */
 public class DataUtility {
-	Driver driver;
 	Connection con;
 	ResultSet result;
 	
@@ -21,6 +22,8 @@ public class DataUtility {
 	 * @throws Throwable 
 	 */
 	public void connectToDB() throws Throwable {
+		
+		Driver driver = new Driver();
 		DriverManager.registerDriver(driver);
 		con = DriverManager.getConnection(IPathConstants.dbURL,IPathConstants.dbUsername,IPathConstants.dbPassword);
 	}
@@ -55,7 +58,7 @@ public class DataUtility {
 			System.out.println(expData + " data verified successfully");
 			return expData;
 		}else {
-		return expData;
-		}
+			System.out.println(expData + " data not verified in DB");
+			return "";		}
 	}
 }

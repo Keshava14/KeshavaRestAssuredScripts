@@ -35,8 +35,8 @@ public class CreateProjectAndVerifyInDB extends BaseClass {
 		System.out.println(expData);
 
 		// verify it in batabase
-		String query ="slect * from project";
-		String actData = dlib.executeQueryAndGetData(query, 2, expData);
+		String query ="select * from project";
+		String actData = dlib.executeQueryAndGetData(query, 4, expData);
 
 		//validate
 		Assert.assertEquals(actData, expData);
